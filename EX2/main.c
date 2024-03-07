@@ -30,7 +30,7 @@ int main()
     }
     printf("\n");
     for (int k=0;k<3;k++){
-        printf("%1.6f ",c[k]);
+        printf("%f ",c[k]);
     }
     printf("\n");
     return 0;
