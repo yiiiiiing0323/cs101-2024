@@ -13,13 +13,15 @@ int main()
     
     fp=fopen("a.bin","wb+");
     fwrite(a,sizeof(int),3,fp);
-    fseek(fp,0,SEEK_SET);
-    fread(ra,sizeof(int),3,fp);
     fwrite(b,sizeof(char),3,fp);
-    fseek(fp,0,SEEK_SET);
-    fread(rb,sizeof(char),3,fp);
     fwrite(c,sizeof(float),3,fp);
     fseek(fp,0,SEEK_SET);
+    fread(ra,sizeof(int),3,fp);
+    
+    //fseek(fp,0,SEEK_SET);
+    fread(rb,sizeof(char),3,fp);
+    
+    //fseek(fp,0,SEEK_SET);
     fread(rc,sizeof(float),3,fp);
     for (int i=0;i<3;i++){
         printf("%d ",a[i]);
@@ -30,8 +32,11 @@ int main()
     }
     printf("\n");
     for (int k=0;k<3;k++){
-        printf("%f ",c[k]);
+        printf("%1.6f ",c[k]);
     }
+    printf("\n");
+    return 0;
+}
     printf("\n");
     return 0;
 }
