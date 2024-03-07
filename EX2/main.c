@@ -16,10 +16,10 @@ int main()
     fseek(fp,0,SEEK_SET);
     fread(ra,sizeof(int),3,fp);
     fwrite(b,sizeof(char),3,fp);
-    //fseek(fp,0,SEEK_SET);
+    fseek(fp,0,SEEK_SET);
     fread(rb,sizeof(char),3,fp);
     fwrite(c,sizeof(float),3,fp);
-    //fseek(fp,0,SEEK_SET);
+    fseek(fp,0,SEEK_SET);
     fread(rc,sizeof(float),3,fp);
     for (int i=0;i<3;i++){
         printf("%d ",a[i]);
