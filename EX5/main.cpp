@@ -1,6 +1,8 @@
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 
 class myString {
@@ -14,38 +16,42 @@ class myString {
 
 class ReadClass {
     private:
-        string str[100];
-        int number = 0;
+        int m_classCount = 0;
+        string m_className[100];
     public:
-        void readFile(const string& filename) {
-            ifstream in(filename);
+        ReadClass() {}
+        void showClass() {
+            ifstream in;
+            string line;
+            in.open("main.cpp");
             if (in.fail()) {
-                cout << "Error opening a file" << endl;
-                return;
+                cout << "Error opening the file main.cpp" << endl;
             }
 
-            string line;
             while (getline(in, line)) {
-                if (line.find("class") != string::npos) {
-                    str[number] = line;
-                    number++;
+                if (line.find("class") == 0) { // a class must be declared at the begining of a line with "class"
+                    m_className[m_classCount++] = line;
                 }
             }
             in.close();
-        }
-
-        void showClass() {
-            cout << number << " classes in main.cpp" << endl;
-            for (int i = 0; i < number; i++) {
-                cout << str[i] << endl;
+            
+            if (m_classCount) {
+                string plural = (m_classCount > 1) ? "es" : "";
+                cout << m_classCount << " class" << plural << " in main.cpp" << endl;
+                for (int i=0; i<m_classCount; i++) {
+                    stringstream str(m_className[i]);
+                    for (int j=0; j<2; j++) {
+                        getline(str, line, ' ');
+                        cout << line << " ";
+                    }
+                    cout << endl;
+                }
             }
         }
 };
 
 int main() {
     ReadClass rfile;
-    rfile.readFile("main.cpp");
     rfile.showClass();
-
     return 0;
 }
