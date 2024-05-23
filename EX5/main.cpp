@@ -3,25 +3,14 @@
 #include <string>
 using namespace std;
 
-class Clock
+class myString 
 {
-public:
-    int m_h;
-    int m_m;
-    int m_s;
-    string m_AP;
-    Clock(int h, int m, int s, string AP)
-    {
-        m_h = h;
-        m_m = m;
-        m_s = s;
-        m_AP = AP;
-    }
-    void display()
-    {
-        cout << "Clock = " << m_h << ":" << m_m << ":" << m_s << " " << m_AP << endl;
-        // Clock = 10:25:43 AM\n
-    }
+    private:
+        string m_str;
+    public:
+        myString(string s){
+            m_str=s;
+        }
 };
 
 class ReadClass
@@ -67,3 +56,4 @@ int main()
     rfile.showClass();
     return 0;
 }
+
